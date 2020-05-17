@@ -1,0 +1,36 @@
+﻿@model IEnumerable<LoginPage.Models.customer>
+@using GridMvc.Html
+@{
+    ViewBag.Title = "GetCustomer";
+}
+
+<h2>GetCustomer</h2>
+
+
+<link href="~/Content/Gridmvc.css" rel="stylesheet" />
+
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+
+
+<script src="~/Scripts/jquery-3.5.1.min.js"></script>
+<script src="~/Scripts/gridmvc.min.js"></script>
+
+<div class="Code-Cut">
+    @Html.Grid(Model).Columns(Columns =>
+{
+Columns.Add(c => c.customer_id).Titled("ID").Filterable(true);
+Columns.Add(c => c.first_name).Titled("FirstName").Filterable(true);
+Columns.Add(c => c.last_name).Titled("LastName").Filterable(true);
+
+Columns.Add(c => c.email).Titled("EMAIL").Filterable(true);
+Columns.Add(c => c.phone).Titled("Phone").Filterable(true);
+Columns.Add(c => c.city).Titled("City").Filterable(true);
+Columns.Add(c => c.state).Titled("State").Filterable(true);
+Columns.Add(c => c.street).Titled("Street").Filterable(true);
+Columns.Add(c => c.zip_code).Titled("ZipCode").Filterable(true);
+
+Columns.Add().Encoded(false).Sanitized(false).SetWidth(30).
+//RenderValueAs(@Url.Action("Edit"),{ customerid: customer_id});
+       RenderValueAs(o =>Html.ActionLink("Edit Me", "Edit", new { customerid = o.customer_id }));
+    }).WithPaging(10).Sortable(true)
+</div>

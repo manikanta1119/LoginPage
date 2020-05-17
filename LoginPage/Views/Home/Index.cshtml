@@ -1,0 +1,60 @@
+﻿
+
+<!DOCTYPE html>
+
+@*<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <div>
+        <h1>List Of Customer</h1>
+    </div>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>customer_id</th>
+                <th>first_name</th>
+                <th>Last_name</th>
+                <th>Phone</th>
+                <th>email</th>
+                <th>city</th>
+                <th>state</th>
+                <th>Zip_code</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Customers)
+            {
+                <tr>
+                    <th scope="row">@item.customer_id</th>
+                    <td>@item.first_name</td>
+                    <td>@item.last_name</td>
+                    <td>@item.phone</td>
+                    <td>@item.email</td>
+                    <td>@item.city</td>
+                    <td>@item.state</td>
+
+                    <td>@item.zip_code</td>
+                    <td><a data-value="@item.customer_id" href="javascript:void(0)" class="btnEdit">Edit</a></td>
+                </tr>
+            }
+        </tbody>
+
+        <tfoot>
+            <tr>
+                <td colspan="5">
+                    <ul class="pagination pull-right">
+                        @for (int pagenum = 1; pagenum <= @Model.PagerCount; pagenum++)
+                        {
+                            <li class="paginate_button"><a href="@Url.Action("index", "home", new { pageNumber = @pagenum })" aria-controls="example" data-dt-idx="2" tabindex="0">@pagenum</a></li>
+                        }
+                    </ul>
+                </td>
+            </tr>
+        </tfoot>
+
+    </table>
+</body>
+</html>*@
